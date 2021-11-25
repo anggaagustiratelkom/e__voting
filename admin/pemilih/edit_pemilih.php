@@ -57,6 +57,44 @@
 				</div>
 			</div>
 
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Program Studi</label>
+				<select class="col-sm-6 btn-group" id="prodi" name="prodi[]" required >
+					<option value="" disabled selected>Pilih Program Studi</option>
+					<option value="Administrasi Pembangunan Negara">Administrasi Pembangunan Negara</option>
+					<option value="Administrasi Bisnis Sektor Publik">Administrasi Bisnis Sektor Publik</option>
+					<option value="Manajemen Sumber Daya Manusia Aparatur">Manajemen Sumber Daya Manusia Aparatur</option>
+				</select>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Kelas</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="kelas" name="kelas" placeholder="xx-xxxx" required/>
+					<small>Format xx-xxxx</small>
+				</div>
+			</div>
+
+            <div class="form-group row">
+				<label class="col-sm-2 col-form-label">Angkatan Tahun</label>
+				<select class="col-sm-3 btn-group" id="angkatan" name="angkatan[]" required >
+					<option value="" disabled selected>Pilih Tahun</option>
+					<option value="2018">2018</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+				</select>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Jenis Kelas</label>
+				<select class="col-sm-3 btn-group" id="jeniskelas" name="jeniskelas[]" required >
+					<option value="" disabled selected>Pilih Jenis Regular/Karyawan</option>
+					<option value="Regular">Regular</option>
+					<option value="Karyawan">Karyawan</option>
+				</select>
+			</div>
+
 		</div>
 		<div class="card-footer">
 			<input type="submit" name="Ubah" value="Simpan" class="btn btn-success">
@@ -65,15 +103,34 @@
 	</form>
 </div>
 
-
-
 <?php
+
+	if(!empty($_POST['prodi'])) {
+		foreach($_POST['prodi'] as $prodi){
+		// echo $prodi;
+		}          
+	}
+	if(!empty($_POST['jeniskelas'])) {
+		foreach($_POST['jeniskelas'] as $jeniskelas){
+		// $kelas = $_POST['kelas'].$jeniskelas;
+		// echo $jeniskelas;
+		}          
+	}if(!empty($_POST['angkatan'])) {
+		foreach($_POST['angkatan'] as $angkatan){
+		// echo $prodi;
+		}
+	}	
 
     if (isset ($_POST['Ubah'])){
     $sql_ubah = "UPDATE tb_pengguna SET
         nama_pengguna='".$_POST['nama_pengguna']."',
         -- foto_pemilih=
-        password='".$_POST['password']."'
+        password='".$_POST['password']."',
+		email='".$_POST['email']."',
+		prodi='".$prodi."',
+		kelas='".$_POST['kelas']."',
+		jeniskelas='".$jeniskelas."',
+		angkatan='".$angkatan."'
         WHERE id_pengguna='".$_POST['id_pengguna']."'";
     $query_ubah = mysqli_query($koneksi, $sql_ubah);
     mysqli_close($koneksi);

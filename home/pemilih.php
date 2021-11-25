@@ -1,24 +1,22 @@
-
-
 <?php
-	// include "inc/koneksi.php";
 	$data_id = $_SESSION["ses_id"];
 
 	$sql = $koneksi->query("select * from tb_pengguna where id_pengguna=$data_id");
 	while ($data= $sql->fetch_assoc()) {
-
-	$status=$data['status'];
-
-}
+		$status=$data['status'];
+		$statusdpm=$data['statusdpm'];
+		$prodi=$data['prodi'];
+		$angkatan=$data['angkatan'];
+	}
 ?>
 
-<?php if($status==1){ ?>
+<?php if(($status==1)&&($statusdpm==1)){ ?>
 
 <div class="row">
 	<div class="card card-info" style="width: 100%">
 		<div class="card-header">
 			<h3 class="card-title">
-				<i class="fa fa-table"></i> Data Kandidat</h3>
+				<i class="fa fa-table"></i> Data Kandidat BEM</h3>
 		</div>
 		<!-- /.card-header -->
 		<div class="card-body">
@@ -79,44 +77,62 @@
 	</div>
 </div>
 
-<?php
-// $data_id = $_SESSION["ses_id"];
-// include "inc/koneksi.php";
-// if(isset ($_POST['pilihan'])){
-// 	$sql_simpan = "INSERT INTO tb_vote (id_calon, id_pemilih) VALUES (
-// 		'".$idcalon."',
-// 		'".$data_id."');";
-// 	$sql_simpan .= "UPDATE tb_pengguna set 
-// 		status='0'
-// 		WHERE id_pengguna='".$data_id."'";
-// 	$query_simpan = mysqli_multi_query($koneksi, $sql_simpan);
-// 	mysqli_close($koneksi);
-	
-// 	if ($query_simpan) {
-// 		echo "<script>
-// 		Swal.fire({title: 'Anda Berhasil Memilih',text: '',icon: 'success',confirmButtonText: 'OK'
-// 		}).then((result) => {if (result.value){
-// 			window.location = 'index.php?page=PsSQAdT';
-// 			}
-// 		})</script>";
-// 		}else{
-// 		echo "<script>
-// 		Swal.fire({title: 'Anda Gagal Memilih',text: '',icon: 'error',confirmButtonText: 'OK'
-// 		}).then((result) => {if (result.value){
-// 			window.location = 'index.php?page=pemilih';
-// 			}
-// 		})</script>";
-// 	  }}
-	?>
-<!-- /.card-body -->
-<?php }elseif ($status==0) { ?>
-
-<div class="alert alert-info alert-dismissible">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h4>
-		<i class="icon fas fa-info"></i>Info</h4>
-	<h3>Anda sudah menggukan Hak Suara dengan baik, Terimakasih.</h3>
+<?php } if(($status==0)&&($statusdpm==1)&&(($angkatan==2019)||($angkatan==2020)||($angkatan==2021))){ ?>
+<div class="row">
+	<div class="card card-info" style="width: 100%">
+		<div class="card-header">
+			<h3 class="card-title">
+				<i class="fa fa-table"></i> Data Kandidat DPM</h3>
+		</div>
+		<!-- /.card-header -->
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>
+								<center><?php echo($prodi) ?> <br> Angkatan <?php echo($angkatan) ?></center>
+							</th>
+						</tr>
+					</thead>
+						<tbody>
+						<td>
+							<div class="row" >
+								<?php $sql = $koneksi->query("SELECT * FROM tb_calondpm WHERE prodi='$prodi' AND angkatan='$angkatan'");
+								while ($datadpm= $sql->fetch_assoc()) {
+								?>
+									<div class="col-md-3">
+										<div class="card">
+											<h2 align="center">
+												<?php echo $datadpm['id_calondpm']; ?>
+											</h2>
+											<img src="foto/<?php echo $datadpm['foto_calondpm']; ?>" class="card-img-top" alt="Calon <?php echo $datadpm['id_calondpm']; ?>">
+											<div class="card-body" align="center">
+												<h5><?php echo $datadpm['nama_calondpm']; ?></h5>
+												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+												<a  href="?page=PsSQBpLdpm&kode=<?php echo $datadpm['id_calondpm']; ?>" class="btn btn-primary" >Pilih Calon <?php echo $datadpm['id_calondpm']; ?></a>
+											</div>
+										</div>
+									</div>
+								<?php
+								}
+								?>
+							</div>
+						</td>
+						</tbody>
+					<!-- </tfoot> -->
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 
-<?php }  
+<!-- /.card-body -->
+<?php } if(($status==0)&&(($statusdpm==0)||($angkatan==2018))){ ?>
+	<div class="alert alert-info alert-dismissible">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<h4> <i class="icon fas fa-info"></i>Info</h4>
+		<h3>Anda sudah menggukan Hak Suara dengan baik, Terimakasih.</h3>
+	</div>	
+<?php } ?>
 

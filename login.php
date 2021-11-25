@@ -1,6 +1,5 @@
 <?php
   include "inc/koneksi.php";
-   
 ?>
 
 <!DOCTYPE html>
@@ -16,31 +15,35 @@
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-	<!-- Ionicons -->
-	<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
-	<!-- icheck bootstrap -->
-	<!--<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
 	<!-- Theme style -->
 	<link rel="stylesheet" href="dist/css/adminlte.min.css">
-	<!-- Google Font: Source Sans Pro -->
-	<!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">-->
+	<style>
+		#textlogo{
+			font: 750 32px sans-serif;
+			background: #005190;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin-top:5px;
+		}
+		#body{
+			background: rgb(40,40,154);
+			background: linear-gradient(90deg, rgba(40,40,154,1) 0%, rgba(250,199,68,1) 100%);
+		}
+		
+	</style>
 </head>
 
-<body class="hold-transition login-page">
+<body id="body"class="hold-transition login-page">
 	<div class="login-box">
-		<div class="login-logo">
-			<img src="dist/img/votingbaru.png" width=170px />
-			<br>
-			<a href="login.php">
-				
-				<b>E-Voting Politeknik STIA LAN Bandung</b>
-			</a>
-		</div>
+		
 		<!-- /.login-logo -->
 		<div class="card">
-			<div class="card-body login-card-body">
-				<p class="login-box-msg">Login System</p>
-
+			<div class="card-body login-card-body rounded">
+				<div class="login-logo">
+					<h1 id="textlogo">E-VOTING</h1>
+					<img class="mb-3 mt-3" src="dist/img/votingbaru.png" width=170px />
+				</div>
+				<p class="login-box-msg">Login Sistem</p>
 				<form action="" method="post">
 					<div class="input-group mb-3">
 						<input type="number" class="form-control" name="npm" placeholder="NPM" required>
@@ -64,11 +67,11 @@
 								<b>Masuk</b>
 							</button>
 						</div>
-						<div class="col-12">
+						<!-- <div class="col-12">
 							<a href="daftar_pemilih.php" class="btn btn-info btn-block btn-flat">
 								<i class=""></i> Daftar</a>
 							</button>
-						</div>
+						</div> -->
 
 						
 						
@@ -103,27 +106,7 @@ function myFunction() {
 }
 </script>
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Select2 -->
-	<script src="plugins/select2/js/select2.full.min.js"></script>
-	<!-- DataTables -->
-	<!--<script src="plugins/datatables/jquery.dataTables.js"></script>-->
-	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-	<!-- AdminLTE App -->
-	<script src="dist/js/adminlte.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="dist/js/demo.js"></script>
-	<!-- page script -->
-	<script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-	<script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-	<script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-	<!--<script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>-->
-	<script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-	<script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-	<script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
 
 <?php
 
@@ -143,10 +126,11 @@ if (isset($_POST['btnLogin'])) {
 		session_start();
 		$_SESSION["ses_id"]=$data_login["id_pengguna"];
 		$_SESSION["ses_nama"]=$data_login["nama_pengguna"];
-		$_SESSION["ses_password"]=$data_login["password"];
+		// $_SESSION["ses_password"]=$data_login["password"];
 		$_SESSION["ses_npm"]=$data_login["npm"];
 		$_SESSION["ses_level"]=$data_login["level"];
-		$_SESSION["ses_status"]=$data_login["status"];
+		// $_SESSION["ses_status"]=$data_login["status"];
+		// $_SESSION["ses_statusdpm"]=$data_login["statusdpm"];
 		$_SESSION["ses_jenis"]=$data_login["jenis"];
 		
 		echo "<script>

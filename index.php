@@ -7,9 +7,10 @@
     }else{
       $data_id = $_SESSION["ses_id"];
       $data_nama = $_SESSION["ses_nama"];
-      $data_npm = $_SESSION["ses_npm"];
+    //   $data_npm = $_SESSION["ses_npm"];
 	  $data_level = $_SESSION["ses_level"];
-	  $data_status = $_SESSION["ses_status"];
+	//   $data_status = $_SESSION["ses_status"];
+	//   $data_statusdpm = $_SESSION["ses_statusdpm"];
 	  $data_jenis = $_SESSION["ses_jenis"];
     }
 
@@ -48,6 +49,9 @@
 	<script>
 		setInterval(function() {
 			$(".realtime").load("admin/suara/data_suara.php").fadeIn("slow");
+		}, 1000);
+		setInterval(function() {
+			$(".realtimedpm").load("admin/suara/data_suaradpm.php").fadeIn("slow");
 		}, 1000);
 	</script>
 </head>
@@ -111,8 +115,8 @@
 
 						<!-- Level  -->
 						<?php
-          if ($data_level=="Administrator"){
-        ?>
+						if ($data_level=="Administrator"){
+						?>
 						<li class="nav-item">
 							<a href="index.php" class="nav-link">
 								<i class="nav-icon fas fa-tachometer-alt"></i>
@@ -132,57 +136,59 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
+									<a href="?page=data-pengguna" class="nav-link">
+										<i class="nav-icon far fa-user ml-2"></i>
+										<p>
+											Admin/Petugas
+										</p>
+									</a>
+								</li>
+								<li class="nav-item">
 									<a href="?page=data-calon" class="nav-link">
-										<i class="nav-icon far fa-circle text-success"></i>
-										<p>Data Kandidat</p>
+										<i class="nav-icon far fa-user ml-2"></i>
+										<p>Kandidat</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="?page=data-pemilih" class="nav-link">
-										<i class="nav-icon far fa-circle text-success"></i>
-										<p>Data Pemilih</p>
+										<i class="nav-icon far fa-user ml-2"></i>
+										<p>Pemilih</p>
 									</a>
 								</li>
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="?page=data-kotak" class="nav-link">
-								<i class="nav-icon far fa fa-table"></i>
-								<p>
-									Kotak Suara
-								</p>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="?page=data-suara" class="nav-link">
+						<li class="nav-item has-treeview">
+							<a href="#" class="nav-link">
 								<i class="nav-icon far fa fa-chart-pie"></i>
 								<p>
 									Quick Count
-									<span class="badge badge-warning">
-										QC
-									</span>
+									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="?page=data-suara" class="nav-link">
+										<i class="nav-icon fas fa-chart-area ml-2"></i>
+										<p> BEM </p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="?page=data-suaradpm" class="nav-link">
+										<i class="nav-icon fas fa-chart-area ml-2"></i>
+										<p> DPM </p>
+									</a>
+								</li>
+							</ul>
 						</li>
-
-
-					
-
-						<li class="nav-header">Setting</li>
-						<li class="nav-item">
-							<a href="?page=data-pengguna" class="nav-link">
-								<i class="nav-icon far fa-user"></i>
-								<p>
-									Users
-								</p>
-							</a>
-						</li>
+						
+						<br>
+						<!-- <li class="nav-header">Setting</li> -->
+						
 
 						<?php
-          				} elseif($data_level=="Petugas"){
-          				?>
+						} elseif($data_level=="Petugas"){
+						?>
 
 						<li class="nav-item">
 							<a href="index.php" class="nav-link">
@@ -204,44 +210,44 @@
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
 									<a href="?page=data-calon" class="nav-link">
-										<i class="nav-icon far fa-circle text-success"></i>
-										<p>Data Kandidat</p>
+										<i class="nav-icon far fa-user ml-2"></i>
+										<p>Kandidat</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="?page=data-pemilih" class="nav-link">
-										<i class="nav-icon far fa-circle text-success"></i>
-										<p>Data Pemilih</p>
+										<i class="nav-icon far fa-user ml-2"></i>
+										<p>Pemilih</p>
 									</a>
 								</li>
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="?page=data-kotak" class="nav-link">
-								<i class="nav-icon far fa fa-table"></i>
-								<p>
-									Kotak Suara
-								</p>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="?page=data-suara" class="nav-link">
+						<li class="nav-item has-treeview">
+							<a href="#" class="nav-link">
 								<i class="nav-icon far fa fa-chart-pie"></i>
 								<p>
 									Quick Count
-									<span class="badge badge-warning">
-										QC
-									</span>
+									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="?page=data-suara" class="nav-link">
+										<i class="nav-icon fas fa-chart-area ml-2"></i>
+										<p> BEM </p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="?page=data-suaradpm" class="nav-link">
+										<i class="nav-icon fas fa-chart-area ml-2"></i>
+										<p> DPM </p>
+									</a>
+								</li>
+							</ul>
 						</li>
-
-
 						
 						<!--<li class="nav-header">Setting</li>-->
-						<br>
 						<br>
 
 						<?php
@@ -324,11 +330,20 @@
 				case 'add-calon':
 					include "admin/calon/add_calon.php";
 					break;
+				case 'add-calondpm':
+					include "admin/calon/add_calondpm.php";
+					break;
 				case 'edit-calon':
 					include "admin/calon/edit_calon.php";
 					break;
+				case 'edit-calondpm':
+					include "admin/calon/edit_calondpm.php";
+					break;
 				case 'del-calon':
 					include "admin/calon/del_calon.php";
+					break;
+				case 'del-calondpm':
+					include "admin/calon/del_calondpm.php";
 					break;
 					
 					//Pemilih
@@ -344,6 +359,7 @@
 				case 'del-pemilih':
 					include "admin/pemilih/del_pemilih.php";
 					break;
+				
 					
 					//Bilik suara
 				case 'PsSQAdT':
@@ -352,12 +368,16 @@
 				case 'PsSQBpL':
 					include "pemilih/calon/pilih_calon.php";
 					break;
+				case 'PsSQBpLdpm':
+					include "pemilih/calon/pilih_calondpm.php";
+					break;
 				case 'PsSQBBK':
-                  include "pemilih/calon/buka_calon.php";
-				  break;
+                  	include "pemilih/calon/buka_calon.php";
+				  	break;
 				case 'view':
-                  include "pemilih/calon/view_calon.php";
-				  break;
+                  	include "pemilih/calon/view_calon.php";
+				  	break;
+
 				  
 				//Kotak suara
 				case 'data-kotak':
@@ -366,9 +386,13 @@
 				case 'data-suara':
                   include "admin/suara/data_suara.php";
                   break;
+				case 'data-suaradpm':
+				  include "admin/suara/data_suaradpm.php";
+				  break;
 				case 'del-kotak':
 				  include "admin/kotak/del_kotak.php";
 				  break;
+
 
 
           
@@ -441,7 +465,7 @@
 	
 	<script>
 		$(function() {
-			$("#example1").DataTable();
+			$(".example1").DataTable();
 			$('#example2').DataTable({
 				"paging": true,
 				"lengthChange": false,

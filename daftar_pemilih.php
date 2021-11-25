@@ -6,12 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>E VOTING | Daftar </title>
 	<link rel="icon" href="dist/img/votinglogo.png">
-	<!-- Tell the browser to be responsive to screen width -->
 
-	<!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	 <!--Font Awesome -->
+	<!--Font Awesome -->
 	<!--<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">-->
 	 <!--Ionicons -->
 	<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
@@ -33,7 +31,6 @@
 <?php 
     //KONEKSI DB
     include "inc/koneksi.php";
-
 ?>
 
 <div class="card card-primary">
@@ -173,7 +170,7 @@
 			} else {
 				echo 'Please select the value.';
 			}
-			$sql_simpan = "INSERT INTO tb_pengguna (npm,nama_pengguna,password,nohp,email,prodi,kelas,jeniskelas,level,status,jenis) VALUES (
+			$sql_simpan = "INSERT INTO tb_pengguna (npm,nama_pengguna,password,nohp,email,prodi,kelas,jeniskelas,level,status,statusdpm,jenis) VALUES (
 				'".$_POST['npm']."',
 				'".$_POST['nama_pengguna']."',
 				'".$pass_acak ."',
@@ -183,6 +180,7 @@
 				'".$_POST['kelas']."',
 				'".$jeniskelas."',
 				'Pemilih',
+				'1',
 				'1',
 				'PST')";
 		    	$query_simpan = mysqli_query($koneksi, $sql_simpan);
@@ -217,14 +215,14 @@
         echo "<script>
         Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
           }).then((result) => {if (result.value){
-          window.location = 'login';
+          window.location = 'index.php?page=add-pemilih';
           }
         })</script>";
       }else{
         echo "<script>
         Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
           }).then((result) => {if (result.value){
-            window.location = 'daftar_pemilih';
+            window.location = 'index.php?page=add-pemilih';
           }
         })</script>";
 	  }

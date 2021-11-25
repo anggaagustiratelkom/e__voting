@@ -64,11 +64,11 @@
 								<b>Masuk</b>
 							</button>
 						</div>
-						<div class="col-12">
+						<!-- <div class="col-12">
 							<a href="daftar_pemilih.php" class="btn btn-info btn-block btn-flat">
 								<i class=""></i> Daftar</a>
 							</button>
-						</div>
+						</div> -->
 
 						
 						

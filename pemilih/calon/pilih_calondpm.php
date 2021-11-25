@@ -2,11 +2,11 @@
 	include "inc/koneksi.php";
 	$data_id = $_SESSION["ses_id"];
     if(isset($_GET['kode'])){
-		$sql_simpan = "INSERT INTO tb_vote (id_calon, id_pemilih) VALUES (
+		$sql_simpan = "INSERT INTO tb_votedpm (id_calondpm, id_pemilih) VALUES (
             '".$_GET['kode']."',
             '".$data_id."');";
         $sql_simpan .= "UPDATE tb_pengguna set 
-			status='0'
+			statusdpm='0'
 			WHERE id_pengguna='".$data_id."'";
         $query_simpan = mysqli_multi_query($koneksi, $sql_simpan);
 		mysqli_close($koneksi);
@@ -27,4 +27,3 @@
 			})</script>";
 		  }}
 		   //selesai proses simpan data
-	  

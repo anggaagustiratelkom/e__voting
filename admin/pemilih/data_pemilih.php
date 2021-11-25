@@ -6,7 +6,7 @@
 	<!-- /.card-header -->
 	<div class="card-body">
 		<div class="table-responsive">
-			<table id="example1" class="table table-bordered table-striped">
+			<table class="example1  table table-bordered table-striped" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>No</th>
@@ -38,18 +38,25 @@
 						</div>
 
 					</form> -->
-					</div>
-					<br>
+				</div>
+		
 				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Hapus Pemilih</label>
+					<label align="center" class="col-lg-2 col-form-label ">Tambah Pemilih</label>
+					<div class="col-sm-2">
+						<a href="index.php?page=add-pemilih" class="btn btn-success btn-block">
+							<i class=""></i> Daftar</a>
+					</div>
+					
+					<label align="center" class="col-sm-2 col-form-label border-left ml-2">Hapus Pemilih</label>
 					<form action="" method="post" enctype="multipart/form-data">
-						<select class="col-sm-3 btn-group" id="hapusprodi" name="hapusprodi[]" required >
+					
+						<select class="col-sm-3 btn-group-center mr-5" id="hapusprodi" name="hapusprodi[]" required >
 							<option value="" disabled selected>Pilih Prodi yang akan dihapus</option>
 							<option value="Administrasi Pembangunan Negara">Administrasi Pembangunan Negara</option>
 							<option value="Administrasi Bisnis Sektor Publik">Administrasi Bisnis Sektor Publik</option>
 							<option value="Manajemen Sumber Daya Manusia Aparatur">Manajemen Sumber Daya Manusia Aparatur</option>
 						</select>
-						<input type="submit" name="deleteall" value="Hapus Semua" class="btn btn-danger" onclick="return confirm('Apakah anda yakin hapus data ini ?')">
+						<input type="submit" name="deleteall" value="Hapus Semua" class="col-lg-2 btn btn-danger" onclick="return confirm('Apakah anda yakin hapus data ini ?')">
 					</form>
 				</div>
 				<br>
@@ -108,14 +115,18 @@
 							<?php echo $data['date']; ?>
 						</td>
 						<td>
-							<?php $stt = $data['status']  ?>
-							<?php if($stt == '1'){ ?>
-							<span class="badge badge-warning">Belum memilih</span>
-							<?php }elseif($stt == '0'){ ?>
-							<span class="badge badge-primary">Sudah memilih</span>
+						<?php 	$stt = $data['status'];
+								$sttdpm = $data['statusdpm'];
+								$angkatan = $data['angkatan'];
+							 	if(($stt == '1')&&($sttdpm == '1')){ ?>
+									<span class="badge badge-danger">Belum memilih</span>
+						<?php	}elseif(($stt == '0')&&($sttdpm == '1')&&(($angkatan == '2019')||($angkatan == '2020')||($angkatan == '2021'))){ ?>
+									<span class="badge badge-warning">Belum memilih DPM</span>
+						<?php 	}elseif(($stt == '0')&&(($sttdpm == '0')||($angkatan == '2018'))){ ?>
+									<span class="badge badge-primary">Sudah memilih</span>
+						<?php 	} ?>
 						</td>
-						<?php } ?>
-						</td>
+						
 						<td>
 							<a href="?page=edit-pemilih&kode=<?php echo $data['id_pengguna']; ?>" title="Ubah"
 							 class="btn btn-success btn-sm">
