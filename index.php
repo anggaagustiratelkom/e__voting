@@ -16,6 +16,9 @@
 
     //KONEKSI DB
     include "inc/koneksi.php";
+	// menghubungkan dengan library excel reader
+	include "inc/excel_reader.php";
+	require 'phpmailer/PHPMailerAutoload.php';
 ?>
 
 <!DOCTYPE html>
@@ -352,6 +355,9 @@
 					break;
 				case 'add-pemilih':
 					include "admin/pemilih/add_pemilih.php";
+					break;
+				case 'approve-password-pemilih':
+					include "admin/pemilih/approve_password.php";
 					break;
 				case 'edit-pemilih':
 					include "admin/pemilih/edit_pemilih.php";

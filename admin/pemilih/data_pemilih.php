@@ -15,30 +15,13 @@
 						<th>Email</th>
 						<th>Prodi</th>
 						<th>Kelas</th>
-						<th>Jenis Kelas</th>
-						<th>No HP</th>
 						<th>Waktu</th>
 						<th>Status</th>
 						<th>Aksi</th>
+						<th>Setujui Password</th>
 					</tr>
 				</thead>
 				<tbody>
-				<div class="col-5">
-					<!-- <form class="form-horizontal" action="" method="post"
-						name="frmCSVImport" id="frmCSVImport"
-						enctype="multipart/form-data">
-						<div class="input-row">
-							<label class="col-md-4 control-label">Choose CSV
-								File</label> <input type="file" name="file"
-								id="file" accept=".csv">
-							<button type="submit" id="submit" name="import"
-								class="btn-submit">Import</button>
-							<br />
-
-						</div>
-
-					</form> -->
-				</div>
 		
 				<div class="form-group row">
 					<label align="center" class="col-lg-2 col-form-label ">Tambah Pemilih</label>
@@ -106,12 +89,6 @@
 							<?php echo $data['kelas']; ?>
 						</td>
 						<td>
-							<?php echo $data['jeniskelas']; ?>
-						</td>
-						<td>
-							<?php echo $data['nohp']; ?>
-						</td>
-						<td>
 							<?php echo $data['date']; ?>
 						</td>
 						<td>
@@ -129,13 +106,30 @@
 						
 						<td>
 							<a href="?page=edit-pemilih&kode=<?php echo $data['id_pengguna']; ?>" title="Ubah"
-							 class="btn btn-success btn-sm">
-								<i class="fa fa-edit"></i>
+							 class="btn btn-success btn-sm ">
+								<i class="fa fa-edit"> Ubah</i>
+								
 							</a>
+							<p></p>
 							<a href="?page=del-pemilih&kode=<?php echo $data['id_pengguna']; ?>" onclick="return confirm('Hapus Data Ini ?')"
 							 title="Hapus" class="btn btn-danger btn-sm">
-								<i class="fa fa-trash"></i>
-								
+								<i class="fa fa-trash"> Hapus</i>
+							</a>	
+						</td>
+						
+						<td align="center">
+							
+						<?php $sttpwd = $data['password'];
+							 	if($sttpwd == ''){ ?>
+									<span class="badge badge-danger">Belum Disetujui</span>
+									<a  href="?page=approve-password-pemilih&kode=<?php echo $data['id_pengguna']; ?>" title="Setujui"
+										class="btn btn-success btn-sm">
+										<i class="fa fa-check"> Setujui</i>
+									</a>
+						<?php	}else { ?>
+									<span class="badge badge-primary">Sudah Disetujui</span>
+						<?php 	}?>
+							
 						</td>
 						 
 					</tr>
